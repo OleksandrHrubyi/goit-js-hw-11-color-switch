@@ -16,6 +16,7 @@ export const choseColor = function (array) {
     const randomColor = array[number];
     bodyRef.style.backgroundColor = randomColor;
     butOn.style.backgroundColor = randomColor;
+    
   }
 };
 
@@ -25,11 +26,25 @@ let timerId = null;
 
 
 export const onChange = function () {
+  
   timerId = setInterval(() => { choseColor(colors) }, 1000)
+  if (timerId)
+  {
+    butOn.setAttribute("disabled", "disabled");
+    return
+    }
+  
+  
+  
+  
+  
 };
 
 
 export const onStop = function () {
-  clearInterval(timerId)
+  clearInterval(timerId);
+  butOn.removeAttribute("disabled");
+  
+  
 };
 
